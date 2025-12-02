@@ -4,9 +4,17 @@ import java.lang.reflect.Array;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello");
-        int[] array = {1,2,3,4,5};
-        System.out.println(printEvens(array));
+
+        Thread[] threads = new Thread[1000];
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(() -> {
+                long sum = 0;
+                for (int j = 1; j <= 1_000_000; j++) {
+                    sum += j;
+                }
+            });
+        }
+
 
     }
 
